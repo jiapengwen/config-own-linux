@@ -1,0 +1,36 @@
+
+
+1) 安装一些必要库
+    $ sudo yum install curl-devel expat-devel gettext-devel \
+    openssl-devel zlib-devel
+    $ sudo apt-get install libcurl4-gnutls-dev libexpat1-dev gettext \
+    libz-dev libssl-dev
+2) github上拉取最新release代码；
+    https://github.com/git/git/releases  
+    wget 或者下载到本地再传到开发机
+    wget https://github.com/git/git/archive/v2.19.0.tar.gz
+
+3) 解压后进入目录内
+    make configure
+    ./configure --prefix=/usr/local/git
+    make 
+    make install
+
+4) 增加git的可执行文件路径到环境变量
+    sudo vi /etc/bashrc
+    追加 export PATH=$PATH:/usr/local/git/bin 到末尾
+
+5) tab自动补全
+    如果你用的是 Bash shell，可以试试看 Git 提供的自动补全脚本。下载 Git 的源代码，进入 contrib/completion 目录，会看到一个 git-completion.bash 文件。将此文件复制到你自己的用户主目录中（译注：按照下面的示例，还应改名加上点：cp git-completion.bash ~/.git-completion.bash），并把下面一行内容添加到你的 .bashrc 文件中：
+    source ~/.git-completion.bash
+
+6) git 设置push时的name和email
+    git config --global user.email "wjp1994721@163.com"
+    git config --global user.name "jiapeng.wen"
+
+7) Git可以将用户名，密码和仓库链接保存在硬盘中，而不用在每次push的时候都输入密码
+    git config credential.helper store
+
+    
+
+

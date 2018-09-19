@@ -1,0 +1,124 @@
+
+1) 安装一些库
+    yum install ncurses-devel
+    ncurses-devel 库是用来弄文本编辑器的，vim和emacs都使用了
+
+2) 从github上下载最新release代码
+    地址为：https://github.com/vim/vim/releases
+    wget https://github.com/vim/vim/archive/v8.1.0408.tar.gz(当前最新release)
+
+3) 编译vim （关键）
+    由于vim插件使用需要一些特定支持；所以编译vim源码时需要特别注意
+    解压后进入目录
+    ./configure --prefix=/usr/local/vim8 --with-features=huge --enable-python3interp --enable-pythoninterp
+    下面给出了编译配置参数解释
+    --with-features=huge：支持最大特性
+    --enable-rubyinterp：打开对ruby编写的插件的支持
+    --enable-pythoninterp：打开对python编写的插件的支持
+    --enable-python3interp：打开对python3编写的插件的支持
+    --enable-luainterp：打开对lua编写的插件的支持
+    --enable-perlinterp：打开对perl编写的插件的支持
+    --enable-multibyte：打开多字节支持，可以在Vim中输入中文
+    --enable-cscope：打开对cscope的支持
+    --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu/ 指定python 路径
+    --with-python-config-dir=/usr/lib/python3.5/config-3.5m-x86_64-linux-gnu/ 指定python3路径
+    --prefix=/usr/local/vim：指定将要安装到的路径(自行创建)
+    一般来说，安装目录单独放在／usr/local/vim8下面，便于管理，删除也只要把vim8这个目录删除即可，目前来说，我的vim需要支持python，python3也最好支持,其余选项目前暂时没遇到
+
+    make 
+    make install
+
+    如果出现问题，一般来说都是库没安装，根据提示一个一个解决
+    可能原因
+    sudo apt-get install python-dev
+    sudo apt-get install python3-dev
+    sudo apt-get install libncurses5-dev
+
+4) 把vim的可执行文件目录加入到环境变量
+    sudo echo "export PATH=$PATH:/usr/local/vim8/bin/" >> /etc/bashrc
+    
+下面是vim插件管理步骤，重要   
+
+step 1:
+
+    安装最新vim，因为自带vim版本过低，有些插件不支持；（最新版本最好）
+    安装git，一般都自带，git clone插件
+
+step 2:
+
+    安装vundle，vim管理插件的工具，安装目录在 ~/.vim/bundle
+    执行：
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+step 3:
+
+    配置.vimrc文件
+
+    将以下内容写入.vimrc 中,注释版
+#########################################################################################
+
+"""vim bundle
+   set nocompatible              " 去除VI一致性,必须
+   filetype off                  " 必须
+
+   " 设置包括vundle和初始化相关的runtime path
+   set rtp+=~/.vim/bundle/Vundle.vim
+   call vundle#begin()
+   " 另一种选择, 指定一个vundle安装插件的路径
+   "call vundle#begin('~/some/path/here')
+
+   " 让vundle管理插件版本,必须
+   Plugin 'VundleVim/Vundle.vim'
+
+   """""""""""""""三种插件配置方式""""""""""""
+   " Github上的插件
+   " 格式为 Plugin '用户名/插件仓库名'
+   Plugin 'tpope/vim-fugitive'
+   Plugin 'scrooloose/nerdtree'
+   "Plugin 'Valloric/YouCompleteMe'
+
+   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+   " 来自 http://vim-scripts.org/vim/scripts.html 的插件
+   " Plugin '插件名称' 实际上是 Plugin 'vim-scripts/插件仓库名' 只是此处的用户名可以省略
+   Plugin 'L9'
+
+   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+   " 由Git支持但不再github上的插件仓库 Plugin 'git clone 后面的地址'
+   "Plugin 'git://git.wincent.com/command-t.git'
+   " 本地的Git仓库(例如自己的插件) Plugin 'file:///+本地插件仓库绝对路径'
+   "Plugin 'file:///home/gmarik/path/to/plugin'
+   " 插件在仓库的子目录中.
+   " 正确指定路径用以设置runtimepath. 以下范例插件在sparkup/vim目录下
+   "Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+   " 安装L9，如果已经安装过这个插件，可利用以下格式避免命名冲突
+   "Plugin 'ascenator/L9', {'name': 'newL9'}
+
+
+   " 你的所有插件需要在下面这行之前
+   call vundle#end()            " 必须
+   filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和文件类型相关脚本
+   " 忽视插件改变缩进,可以使用以下替代:
+   "filetype plugin on
+   "
+   " 简要帮助文档
+   " :PluginList       - 列出所有已配置的插件
+   " :PluginInstall    - 安装插件,追加 `!` 用以更新或使用 :PluginUpdate
+   " :PluginSearch foo - 搜索 foo ; 追加 `!` 清除本地缓存
+   " :PluginClean      - 清除未使用插件,需要确认; 追加 `!` 自动批准移除未使用插件
+   "
+   " 查阅 :h vundle 获取更多细节和wiki以及FAQ
+   " 将你自己对非插件片段放在这行之后
+   """    
+
+#########################################################################################
+
+setp 4:
+
+    1)命令行输入 vim
+    2)vim中执行:PluginInstall(执行这个会自动通过git拉取.vimrc中配置的Plugin地址，然后vundle会管理)
+    3)如果想删除插件，执行注释或者删除Plugin xxx, 然后在vim中执行 :PluginClean vundle就会删除该插件
+
+
+
+以上就是vundle管理插件了
+
