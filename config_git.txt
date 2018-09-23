@@ -29,7 +29,7 @@
     git config --global user.name "jiapeng.wen"
 
 7) Git可以将用户名，密码和仓库链接保存在硬盘中，而不用在每次push的时候都输入密码
-    git config credential.helper store
+    git config --global credential.helper store
 
 
 *******************使用中出现的问题及解决方案******************************8
