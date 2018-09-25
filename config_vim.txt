@@ -1,4 +1,5 @@
 
+(vim8  很多插件不能用，为了简单起见，yum isntall vim 挺好用的，没时间去研究vim8)
 1) 安装一些库
     yum install ncurses-devel
     ncurses-devel 库是用来弄文本编辑器的，vim和emacs都使用了

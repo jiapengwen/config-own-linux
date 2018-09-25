@@ -1,0 +1,19 @@
+
+
+
+1) 安装依赖库
+    yum install ncurses-devel libaio-devel openssl-devel  -y
+
+2) 首先确保g++，gcc编译器支持c++11，g++ --version 看是否是4.8+ ，4.8才支持c++11
+
+3）cmake 官网下载源码，本次下载最新的源码 3.12.2
+    https://cmake.org/download/
+    直接wget https://cmake.org/files/v3.12/cmake-3.12.2.tar.gz
+
+4)解压，进入目录内
+    ./bootstrap
+    ./configure --prefix=/usr/local/cmake
+    ./make -j8
+    ./sudo make install
+
+done
