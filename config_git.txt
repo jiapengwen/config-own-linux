@@ -50,17 +50,17 @@
     
     c)安装commitizen
     npm install -g commitizen
+    npm install -g cz-conventional-changelog
     //生存changelog的工具
     //npm install -g conventional-changelog
     //npm install -g conventional-changelog-cli
     //npm ls -g -depth=0 (出现安装的模块，不要报错)
-    
-    d)git repo设置
-    进入git repo中,touch package.json
-    npm init --yes
-    commitizen init cz-conventional-changelog --save --save-exact
-    conventional-changelog -p angular -i CHANGELOG.md -s
-    然后就可以git cz 提交了代码，会有提示教你怎么做
+    在用户目录下创建.czrc文件
+    touch ~/.czrc   
+    echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc
+
+    d)然后就可以git cz 提交了代码，会有提示教你怎么做(用git cz 替换 git commit， git commit
+的参数也可以继续用，例如 git cz -a)
 
 
 
