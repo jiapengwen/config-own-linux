@@ -51,9 +51,9 @@
     c)安装commitizen
     npm install -g commitizen
     //生存changelog的工具
-    npm install -g conventional-changelog
-    npm install -g conventional-changelog-cli
-    npm ls -g -depth=0 (出现安装的模块，不要报错)
+    //npm install -g conventional-changelog
+    //npm install -g conventional-changelog-cli
+    //npm ls -g -depth=0 (出现安装的模块，不要报错)
     
     d)git repo设置
     进入git repo中,touch package.json
