@@ -35,6 +35,39 @@
 
     a)安装npm
     目前来说node.js和npm集成在一起了，所以只要安装node.js，npm也会安装好；
+    wget https://nodejs.org/dist/latest-v10.x/node-v10.11.0.tar.gz
+    tar zxvf node-v10.11.0.tar.gz
+    cd 
+    ./configure --prefix=/usr/local/node
+    sudo make (此步时间有些长, 可以 sudo make -j4)
+    sudo make install
+    node.js安装好了，检测一下安装效果(环境变量自己加一下)
+    node --version  
+    npm --version
+
+    b) 更新npm(重要，不更新可能导致错误)
+    sudo npm install -g npm@latest
+    
+    c)安装commitizen
+    npm install -g commitizen
+    //生存changelog的工具
+    npm install -g conventional-changelog
+    npm install -g conventional-changelog-cli
+    npm ls -g -depth=0 (出现安装的模块，不要报错)
+    
+    d)git repo设置
+    进入git repo中,touch package.json
+    npm init --yes
+    commitizen init cz-conventional-changelog --save --save-exact
+    conventional-changelog -p angular -i CHANGELOG.md -s
+    然后就可以git cz 提交了代码，会有提示教你怎么做
+
+
+
+    
+
+    
+    
     
     
 
