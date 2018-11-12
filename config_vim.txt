@@ -11,7 +11,11 @@
 3) 编译vim （关键）
     由于vim插件使用需要一些特定支持；所以编译vim源码时需要特别注意
     解压后进入目录
-    ./configure --prefix=/usr/local/vim8 --with-features=huge --enable-python3interp --enable-pythoninterp
+    ./configure --with-features=huge --enable-python3interp=yes --enable-pythoninterp=yes
+    --with-python-config-dir=/usr/local/python27/lib/python2.7/config --enable-luainterp=yes
+    --enable-perlinterp=yes
+    --with-python3-config-dir=/usr/local/python3/lib/python3.7/config-3.7m-x86_64-linux-gnu/
+    --enable-multibyte --enable-cscope      --prefix=/usr/local/vim8/
     下面给出了编译配置参数解释
     --with-features=huge：支持最大特性
     --enable-rubyinterp：打开对ruby编写的插件的支持
@@ -26,7 +30,7 @@
     --prefix=/usr/local/vim：指定将要安装到的路径(自行创建)
     一般来说，安装目录单独放在／usr/local/vim8下面，便于管理，删除也只要把vim8这个目录删除即可，目前来说，我的vim需要支持python，python3也最好支持,其余选项目前暂时没遇到
 
-    make 
+    make VIMRUNTIMEDIR=/usr/share/vim/vim80
     make install
 
     如果出现问题，一般来说都是库没安装，根据提示一个一个解决
