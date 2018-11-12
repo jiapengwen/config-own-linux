@@ -123,6 +123,11 @@ setp 4:
     2)vim中执行:PluginInstall(执行这个会自动通过git拉取.vimrc中配置的Plugin地址，然后vundle会管理)
     3)如果想删除插件，执行注释或者删除Plugin xxx, 然后在vim中执行 :PluginClean vundle就会删除该插件
 
+** ycm安装还需要一步，特别需要注意
+cd ~/.vim/bundle/YouCompleteMe
+./install.py --clang-completer
+sudo python3 ./install.py --clang-completer
+
 
 
 以上就是vundle管理插件了
