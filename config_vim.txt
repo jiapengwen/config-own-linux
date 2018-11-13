@@ -15,13 +15,14 @@
     --with-python-config-dir=/usr/local/python27/lib/python2.7/config --enable-luainterp=yes
     --enable-perlinterp=yes
     --with-python3-config-dir=/usr/local/python3/lib/python3.7/config-3.7m-x86_64-linux-gnu/
-    --enable-multibyte --enable-cscope      --prefix=/usr/local/vim8/
+    --enable-multibyte --enable-cscope  --enable-luainterp    --prefix=/usr/local/vim8/
     下面给出了编译配置参数解释
     --with-features=huge：支持最大特性
     --enable-rubyinterp：打开对ruby编写的插件的支持
     --enable-pythoninterp：打开对python编写的插件的支持
     --enable-python3interp：打开对python3编写的插件的支持
     --enable-luainterp：打开对lua编写的插件的支持
+    --with-lua-prefix:指定lua的安装路径,默认为$LUA_PREFIX或者/usr
     --enable-perlinterp：打开对perl编写的插件的支持
     --enable-multibyte：打开多字节支持，可以在Vim中输入中文
     --enable-cscope：打开对cscope的支持
@@ -30,7 +31,7 @@
     --prefix=/usr/local/vim：指定将要安装到的路径(自行创建)
     一般来说，安装目录单独放在／usr/local/vim8下面，便于管理，删除也只要把vim8这个目录删除即可，目前来说，我的vim需要支持python，python3也最好支持,其余选项目前暂时没遇到
 
-    make VIMRUNTIMEDIR=/usr/share/vim/vim80
+    //make VIMRUNTIMEDIR=/usr/share/vim/vim80    /有问题
     make install
 
     如果出现问题，一般来说都是库没安装，根据提示一个一个解决
