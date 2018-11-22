@@ -1,7 +1,7 @@
 
-# .bashrc 配置
-'''  
+##  bashrc 配置
 
+```bash
 function git_branch {  
    branch="`git branch 2>/dev/null | grep "^\*" | sed -e "s/^\*\ //"`"  
    if [ "${branch}" != "" ];then  
@@ -13,4 +13,4 @@ function git_branch {
 }  
 
 export PS1='\u@\h \[\033[01;36m\]\W\[\033[01;32m\]$(git_branch)\[\033[00m\] \$ '  
-'''
+```
