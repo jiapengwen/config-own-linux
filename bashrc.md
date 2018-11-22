@@ -2,6 +2,7 @@
 ##  bashrc 配置
 
 ```bash
+//Linux 终端显示 Git 当前所在分支
 function git_branch {  
    branch="`git branch 2>/dev/null | grep "^\*" | sed -e "s/^\*\ //"`"  
    if [ "${branch}" != "" ];then  
