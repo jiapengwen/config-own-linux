@@ -1,6 +1,7 @@
 
 # .bashrc 配置
-'''
+'''  
+
 function git_branch {  
    branch="`git branch 2>/dev/null | grep "^\*" | sed -e "s/^\*\ //"`"  
    if [ "${branch}" != "" ];then  
