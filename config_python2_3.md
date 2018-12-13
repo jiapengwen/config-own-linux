@@ -1,6 +1,6 @@
-#config python
+# config python
 
-##python2 
+## python2 
 
 > pip is already installed if you are using  python2 >= 2.7.9 or python3 >= 3.4;
 
